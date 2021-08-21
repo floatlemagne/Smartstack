@@ -22,3 +22,7 @@ Unless you fully understand how these functions work, using these functions will
 If you would like to view the memory addresses that values are placed in inside your code, then you must place this statement inside smartstack.h: `#define DEBUG_SMARTSTACK`. This will allow you to see the memory address of your struct and its elements as you push back and pop off elements in the stack.
 ### Makefile
 To quickly compile and run your code, you can use the Makefile provided here. Simply replace `TARGET`'s value with the name of your file (the one with your `main()` function).
+### Different data types
+Currently, smartstack only supports elements of 4 types: `int`, `float`, `double`, and `char`. You can add on to existing functions to support other data types if you wish. (IMPORTANT) While it is possible to make a smartstack that has elements of different types, this should be avoided whenever possible. Stack overflow and underflow is prevented via `assert`s, but macros such as `smartstack_is_full()` WILL NOT WORK for smartstacks consisting of different data type elements.
+## Conclusion
+This is one of my first projects, and this is nowhere near perfect. I'd appreciate that if you do use it, at least give me credit. This isn't mandatory however.
