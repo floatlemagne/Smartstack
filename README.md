@@ -8,7 +8,7 @@ This library is intended to be compiled on GCC. Using any different compiler (e.
 The header file smartstack.h provides functions and macros for the implementation of a stack-like dynamic data structure. It provides bounds-checking, stack-like behavior, scope-based resource management, and memory leak prevention.
 
 ## How-to
-Along with this program is an example program to show how to create a smartstack, and perform stack-like operations such as pushing, popping, and peeking at elements in the data structure. I will not cover the intricacies of smartstack, however you may view the header file (smartstack.h) and implementation file (smartstack.c) to see how it works inside.
+Along with this program is an example program to show how to create a smartstack (main.c), and perform stack-like operations such as pushing, popping, and peeking at elements in the data structure. I will not cover the intricacies of smartstack, however you may view the header file (smartstack.h) and implementation file (smartstack.c) to see how it works inside.
 ### Functions to never use
 Never use these functions anywhere in your code:
 - `smartstack_construct()`
