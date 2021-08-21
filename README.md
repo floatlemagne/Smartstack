@@ -17,6 +17,7 @@ Never use these functions anywhere in your code:
 - `smartstack_pop_raw()`
 - `smartstack_peek_raw()`
 - `smartstack_isfull_raw()`
+
 Unless you fully understand how these functions work, using these functions will lead to undefined behavior if not careful. Instead, use the `smartstack_create()` macro to call `smartstack_construct_raw()`, and the macro counterparts to the functions ending in `_raw`.
 ### Debugging your smartstack
 If you would like to view the memory addresses that values are placed in inside your code, then you must place this statement inside smartstack.h: `#define DEBUG_SMARTSTACK`. This will allow you to see the memory address of your struct and its elements as you push back and pop off elements in the stack.
