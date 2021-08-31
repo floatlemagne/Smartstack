@@ -1,5 +1,5 @@
 TARGET = main
-WARNINGS = -Wall -Wextra
+WARNINGS = -Wall -Wextra -Wformat=2
 
 all: $(TARGET)
 
