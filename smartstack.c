@@ -135,7 +135,7 @@ smartstack_isempty(smartstack_t* obj)
 bool
 smartstack_isfull_raw(smartstack_t* obj, const char type[])
 {
-    assert((!strcmp(type, "int") || !strcmp(type, "float") || !strcmp(type, "char") || !strcmp(type, "double")) 
+    assert(((!strcmp(type, "int") || !strcmp(type, "float") || !strcmp(type, "char") || !strcmp(type, "double")) 
     && "Invalid or unsupported type!");
     
     if(!strcmp(type, "int"))                return obj->end_index == obj->capacity / sizeof(int);
