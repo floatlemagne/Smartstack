@@ -1,11 +1,13 @@
 #ifndef SMARTSTACK_H
 #define SMARTSTACK_H
 
-    /* DEBUG_SMARTSTACK ON/OFF SWITCH; LEFT UNDEFINED BY DEFAULT */
-    #define DEBUG_SMARTSTACK
+    /* DEBUG_SMARTSTACK ON/OFF SWITCH; LEFT DEFINED BY DEFAULT */
+    #ifndef DEBUG_SMARTSTACK
+        #define DEBUG_SMARTSTACK
+    #endif
 
     #ifndef __cplusplus
-    #include <stdbool.h>
+        #include <stdbool.h>
     #endif
 
     #include <stdlib.h>
