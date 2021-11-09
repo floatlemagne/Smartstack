@@ -16,7 +16,7 @@ int main()
 
     int* elem = smartstack_peek(stack1, int);       /* Set pointer to point at element at top of stack1. */
 
-    printf("%d", *elem);                            /* Viewing topmost element of stack. This will print a garbage value. */
+    printf("%d", *elem);                            /* Viewing topmost element of stack. This will print a garbage value since the stack is empty. */
     
     smartstack_create(stack2, 128);
     
