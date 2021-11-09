@@ -19,8 +19,8 @@ int main()
     printf("%d", *elem);                            /* Viewing topmost element of stack. This will print a garbage value since the stack is empty. */
     
     smartstack_create(stack2, 128);
-    
-    for(unsigned int i = 0; i < stack2->capacity / sizeof(int); ++i)
+                                                    
+    for(unsigned int i = 0; i < stack2->capacity / sizeof(int); ++i)  
     {
         smartstack_push(stack2, int, i);
         /* Define DEBUG_SMARTSTACK in smartstack.h to see where it's pushed in memory */
