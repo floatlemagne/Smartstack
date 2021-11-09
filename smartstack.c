@@ -14,6 +14,7 @@ smartstack_t*
 smartstack_construct(size_t size_in_bytes)
 {
     smartstack_t* new_stack = (smartstack_t*)malloc(sizeof(smartstack_t));
+    
     assert(new_stack != NULL && "Construction of new smartstack failed!");
 
     new_stack->data         = malloc(size_in_bytes);
@@ -58,33 +59,44 @@ smartstack_push_raw(smartstack_t* obj, const char type[], void* value)
 
     if(!strcmp(type, "int")) {
         assert((obj->end_index < (obj->capacity / sizeof(int))) && "Stack overflow!");
+        
         *((int*)(obj->data) + (obj->end_index * sizeof(int))) = *(int*)value;
+        
         #ifdef DEBUG_SMARTSTACK
-        fprintf(SMARTSTACK_LOG_BEGIN "Pushing element %zu @ 0x%p in smartstack @ 0x%p.\n\n" 
-                SMARTSTACK_LOG_END, obj->end_index, ((int*)(obj->data) + (obj->end_index)), obj);
+            fprintf(SMARTSTACK_LOG_BEGIN "Pushing element %zu @ 0x%p in smartstack @ 0x%p.\n\n" 
+                    SMARTSTACK_LOG_END, obj->end_index, ((int*)(obj->data) + (obj->end_index)), obj);
         #endif
     }
+    
     else if(!strcmp(type, "float")) {
         assert((obj->end_index < (obj->capacity / sizeof(float))) && "Stack overflow!");
+        
         *((float*)(obj->data) + (obj->end_index * sizeof(float))) = *(float*)value;
+        
         #ifdef DEBUG_SMARTSTACK
-        fprintf(SMARTSTACK_LOG_BEGIN "Pushing element %zu @ 0x%p in smartstack @ 0x%p.\n\n" 
-                SMARTSTACK_LOG_END, obj->end_index, ((float*)(obj->data) + (obj->end_index)), obj);
+            fprintf(SMARTSTACK_LOG_BEGIN "Pushing element %zu @ 0x%p in smartstack @ 0x%p.\n\n" 
+                    SMARTSTACK_LOG_END, obj->end_index, ((float*)(obj->data) + (obj->end_index)), obj);
         #endif
     }
+    
     else if(!strcmp(type, "char")) {
         assert((obj->end_index < (obj->capacity / sizeof(char))) && "Stack overflow!");
+       
         *((char*)(obj->data) + (obj->end_index)) = *(char*)value;
+        
         #ifdef DEBUG_SMARTSTACK
-        fprintf(SMARTSTACK_LOG_BEGIN "Pushing element %zu @ 0x%p in smartstack @ 0x%p.\n\n" 
-                SMARTSTACK_LOG_END, obj->end_index, ((char*)(obj->data) + (obj->end_index)), obj);
+            fprintf(SMARTSTACK_LOG_BEGIN "Pushing element %zu @ 0x%p in smartstack @ 0x%p.\n\n" 
+                    SMARTSTACK_LOG_END, obj->end_index, ((char*)(obj->data) + (obj->end_index)), obj);
         #endif
     }
+    
     else if(!strcmp(type, "double")) {
         assert((obj->end_index < (obj->capacity / sizeof(double))) && "Stack overflow!");
+        
         *((double*)(obj->data) + (obj->end_index * sizeof(double))) = *(double*)value;
+        
         #ifdef DEBUG_SMARTSTACK
-        fprintf(SMARTSTACK_LOG_BEGIN "Pushing element %zu @ 0x%p in smartstack @ 0x%p.\n\n" 
+            fprintf(SMARTSTACK_LOG_BEGIN "Pushing element %zu @ 0x%p in smartstack @ 0x%p.\n\n" 
                 SMARTSTACK_LOG_END, obj->end_index, ((double*)(obj->data) + (obj->end_index)), obj);
         #endif
     }
@@ -99,28 +111,32 @@ smartstack_pop_raw(smartstack_t* obj, const char type[])
     
     if(obj->end_index > 0) {
         obj->end_index -= 1;
+        
         if(!strcmp(type, "int")) {
-        #ifdef DEBUG_SMARTSTACK
-            fprintf(SMARTSTACK_LOG_BEGIN "Popping element %zu @ 0x%p in smartstack @ 0x%p.\n\n" 
-                    SMARTSTACK_LOG_END, obj->end_index, ((int*)(obj->data) + (obj->end_index)), obj);
+            #ifdef DEBUG_SMARTSTACK
+                    fprintf(SMARTSTACK_LOG_BEGIN "Popping element %zu @ 0x%p in smartstack @ 0x%p.\n\n" 
+                            SMARTSTACK_LOG_END, obj->end_index, ((int*)(obj->data) + (obj->end_index)), obj);
             #endif
         }
+        
         else if(!strcmp(type, "float")) {
             #ifdef DEBUG_SMARTSTACK
             fprintf(SMARTSTACK_LOG_BEGIN "Popping element %zu @ 0x%p in smartstack @ 0x%p.\n\n" 
                     SMARTSTACK_LOG_END, obj->end_index, ((float*)(obj->data) + (obj->end_index)), obj);
             #endif
         }
+        
         else if(!strcmp(type, "char")) {
             #ifdef DEBUG_SMARTSTACK
-            fprintf(SMARTSTACK_LOG_BEGIN "Popping element %zu @ 0x%p in smartstack @ 0x%p.\n\n" 
-                    SMARTSTACK_LOG_END, obj->end_index, ((char*)(obj->data) + (obj->end_index)), obj);
+                fprintf(SMARTSTACK_LOG_BEGIN "Popping element %zu @ 0x%p in smartstack @ 0x%p.\n\n" 
+                        SMARTSTACK_LOG_END, obj->end_index, ((char*)(obj->data) + (obj->end_index)), obj);
             #endif
         }
+        
         else if(!strcmp(type, "double")) {
             #ifdef DEBUG_SMARTSTACK
-            fprintf(SMARTSTACK_LOG_BEGIN "Popping element %zu @ 0x%p in smartstack @ 0x%p.\n\n" 
-                    SMARTSTACK_LOG_END, obj->end_index, ((double*)(obj->data) + (obj->end_index)), obj);
+                fprintf(SMARTSTACK_LOG_BEGIN "Popping element %zu @ 0x%p in smartstack @ 0x%p.\n\n" 
+                        SMARTSTACK_LOG_END, obj->end_index, ((double*)(obj->data) + (obj->end_index)), obj);
             #endif
         }
     }
@@ -142,5 +158,6 @@ smartstack_isfull_raw(smartstack_t* obj, const char type[])
     else if(!strcmp(type, "float"))         return obj->end_index == obj->capacity / sizeof(float);
     else if(!strcmp(type, "char"))          return obj->end_index == obj->capacity / sizeof(char);
     else if(!strcmp(type, "double"))        return obj->end_index == obj->capacity / sizeof(double);
+           
     return 0;
 }
